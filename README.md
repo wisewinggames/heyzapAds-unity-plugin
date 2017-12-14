@@ -1,6 +1,6 @@
 # heyzapAds-unity-plugin
 
-Instructions:
+Instructions for Ads:
 	Import Package
 	Assets > Play Services Resolver > Android Resolver  Resolve Client Jars
 	Enable Unity ads   // For Google Play only
@@ -18,3 +18,7 @@ Instructions:
 		Add ShowBanner.cs in the scene to show banner ad.
 	
 		Add ShowRewardAd.cs on the UIButton to show reward ad //Assign GameObject to recieve callback 
+		
+Instructions For IAP:
+	import Unity IAP
+	Windows > Unity IAP > Android > Target

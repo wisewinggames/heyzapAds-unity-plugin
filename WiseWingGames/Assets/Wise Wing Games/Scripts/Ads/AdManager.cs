@@ -69,13 +69,15 @@ namespace WiseWingGames
 
 
 		#region Remove Ads
-		void CheckIfAdsAreRemoved ()
+		public bool CheckIfAdsAreRemoved ()
 		{
 
 			if (PlayerPrefs.GetInt ("AdsRemoved", 0) == 1)
 				adsRemoved = true;
 			else
 				adsRemoved = false;
+
+			return adsRemoved;
 		}
 
 		public void RemoveAds ()
@@ -276,7 +278,7 @@ namespace WiseWingGames
 		{
 			HZInterstitialAd.AdDisplayListener listener = delegate(string adState, string adTag) {
 
-				Debug.Log ("Static Ad ::: adState: " + adState + " , adTag: " + adTag);
+			//	Debug.Log ("Static Ad ::: adState: " + adState + " , adTag: " + adTag);
 
 				if (adState.Equals ("show")) {
 					//Ad showing, pause game
@@ -313,7 +315,7 @@ namespace WiseWingGames
 		void SetVideoListener ()
 		{
 			HZVideoAd.AdDisplayListener listener = delegate(string adState, string adTag) {
-				Debug.Log ("Video Ad ::: adState: " + adState + " , adTag: " + adTag);
+//				Debug.Log ("Video Ad ::: adState: " + adState + " , adTag: " + adTag);
 
 				if (adState.Equals ("show")) {
 					//Ad showing, pause game

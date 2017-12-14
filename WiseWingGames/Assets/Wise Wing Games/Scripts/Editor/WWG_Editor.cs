@@ -83,7 +83,10 @@ namespace WiseWingGames
 
 		}
 
-
+		[MenuItem("Wise Wing Games/Clear Saved Data", false , 100)]
+		public static void ClearPlayerPrefs(){
+			PlayerPrefs.DeleteAll ();
+		}
 
 
 
@@ -94,8 +97,8 @@ namespace WiseWingGames
 				GeneralSettings general = (GeneralSettings)target;
 				DrawDefaultInspector();
 				GUILayout.Space(20);
-				if(GUILayout.Button("Set Bundle Identifier")) {
-					general.SetBundleIdentifier();
+				if(GUILayout.Button("Setup")) {
+					general.Setup();
 				}
 
 			}
