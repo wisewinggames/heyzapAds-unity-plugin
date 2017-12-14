@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace WiseWingGames
 {
-	public class ShowRewardCurrencyAd : MonoBehaviour
+	public class ShowRewardAd : MonoBehaviour
 	{
 		[Space (20)]
 		public string adTag = "free-currency";

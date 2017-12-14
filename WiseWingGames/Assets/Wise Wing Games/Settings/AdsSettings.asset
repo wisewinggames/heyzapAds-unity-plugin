@@ -23,5 +23,5 @@ MonoBehaviour:
   - resume-play
   showBanner: 0
   bannerPosition: 0
-  minTimeBetweenAdRequestsInSeconds: 0
+  minTimeBetweenAdRequestsInSeconds: 15
   showTestSuite: 1

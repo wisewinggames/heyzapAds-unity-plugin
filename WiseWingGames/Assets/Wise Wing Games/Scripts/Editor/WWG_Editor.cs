@@ -8,9 +8,9 @@ namespace WiseWingGames
 
 	public class WWG_Editor
 	{
+		
 
-
-		[MenuItem("Wise Wing Games/General Settingss", false, -100)]
+		[MenuItem("Wise Wing Games/General Settings", false, -100)]
 		public static void SelectGeneralSettings(){
 			string[] folder = new string[]{ "Assets/Wise Wing Games/Settings" };
 

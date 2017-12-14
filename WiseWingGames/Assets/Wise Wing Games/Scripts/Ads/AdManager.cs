@@ -31,7 +31,9 @@ namespace WiseWingGames
 
 		void OnEnable ()
 		{
-			SetRewardAdListner ();
+			SetRewardAdListener ();
+			SetInterstitialListener ();
+			SetVideoListener ();
 		}
 
 		void Start ()
@@ -132,7 +134,8 @@ namespace WiseWingGames
 
 		public void ShowVideoAd ()
 		{
-			HZVideoAd.Show ();
+			if (canShowAd)
+				HZVideoAd.Show ();
 		}
 
 		public void ShowVideoAd (string tag)
@@ -152,10 +155,10 @@ namespace WiseWingGames
 
 		#region Banner Ad
 
-		public void ShowBannerAd ()
+		public void ShowBannerAd (string _position)
 		{
 			HZBannerShowOptions showOptions = new HZBannerShowOptions ();
-			showOptions.Position = HZBannerShowOptions.POSITION_TOP;
+			showOptions.Position = _position;
 			HZBannerAd.ShowWithOptions (showOptions);
 		}
 
@@ -193,7 +196,7 @@ namespace WiseWingGames
 		}
 
 
-		void SetRewardAdListner ()
+		void SetRewardAdListener ()
 		{
 			HZIncentivizedAd.AdDisplayListener listener = delegate(string adState, string adTag) {
 				if (adState.Equals ("show")) {
@@ -237,7 +240,7 @@ namespace WiseWingGames
 		#endregion
 
 
-		void SetInterstitialListner ()
+		void SetInterstitialListener ()
 		{
 			HZInterstitialAd.AdDisplayListener listener = delegate(string adState, string adTag) {
 
@@ -275,7 +278,7 @@ namespace WiseWingGames
 			HZInterstitialAd.SetDisplayListener (listener);
 		}
 
-		void SetVideoListner ()
+		void SetVideoListener ()
 		{
 			HZVideoAd.AdDisplayListener listener = delegate(string adState, string adTag) {
 				Debug.Log ("Video Ad ::: adState: " + adState + " , adTag: " + adTag);
