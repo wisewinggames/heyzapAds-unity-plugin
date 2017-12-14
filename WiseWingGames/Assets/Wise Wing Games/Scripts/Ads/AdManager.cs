@@ -13,6 +13,7 @@ namespace WiseWingGames
 		AdsSettings adsSettings;
 		bool canShowAd;
 		float timer;
+		bool adsRemoved;
 
 		public delegate void RewardAdDelegate (string adTag);
 
@@ -26,24 +27,29 @@ namespace WiseWingGames
 			} else {
 				instance = this;
 			}
-		
+
+			CheckIfAdsAreRemoved ();
 		}
 
 		void OnEnable ()
 		{
 			SetRewardAdListener ();
+
+			if (adsRemoved)
+				return;
 			SetInterstitialListener ();
 			SetVideoListener ();
 		}
 
 		void Start ()
 		{
-
 			adsSettings = WiseWingGamesSetup.instance.GetAdsSettings;
+
+			InitHeyZap ();
 
 			AdRequestAvailable ();
 
-			InitHeyZap ();
+			FetchAds ();
 
 			//Show Heyzap test suite........
 			if (adsSettings.showTestSuite)
@@ -60,6 +66,26 @@ namespace WiseWingGames
 			if (timer <= 0)
 				AdRequestAvailable ();
 		}
+
+
+		#region Remove Ads
+		void CheckIfAdsAreRemoved ()
+		{
+
+			if (PlayerPrefs.GetInt ("AdsRemoved", 0) == 1)
+				adsRemoved = true;
+			else
+				adsRemoved = false;
+		}
+
+		public void RemoveAds ()
+		{
+			PlayerPrefs.SetInt ("AdsRemoved", 1);
+			adsRemoved = true;
+			DestroyBanner ();
+		}
+		#endregion
+
 
 		void StartTimer ()
 		{
@@ -93,10 +119,16 @@ namespace WiseWingGames
 
 		void FetchAds ()
 		{
+			foreach (string tag in adsSettings.rewardAdTags) {
+				HZIncentivizedAd.Fetch (tag);
+			}
+			HZIncentivizedAd.Fetch ();
+
+			//Dont fetch interstitials if NoAds is baught
+			if (adsRemoved)
+				return;
 
 			HZVideoAd.Fetch ();
-
-			HZIncentivizedAd.Fetch ();
 
 			foreach (string tag in adsSettings.staticAdTags) {
 				HZInterstitialAd.Fetch (tag);
@@ -104,22 +136,20 @@ namespace WiseWingGames
 			foreach (string tag in adsSettings.videoAdTags) {
 				HZVideoAd.Fetch (tag);
 			}
-			foreach (string tag in adsSettings.rewardAdTags) {
-				HZIncentivizedAd.Fetch (tag);
-			}
+
 		}
 
 		#region Static Ad
 
 		public void ShowInterstitialAd ()
 		{
-			if (canShowAd)
+			if (canShowAd && !adsRemoved)
 				HZInterstitialAd.Show ();
 		}
 
 		public void ShowInterstitialAd (string tag)
 		{
-			if (canShowAd) {
+			if (canShowAd && !adsRemoved) {
 				HZShowOptions options = new HZShowOptions ();
 				options.Tag = tag;
 				HZInterstitialAd.ShowWithOptions (options);
@@ -134,13 +164,13 @@ namespace WiseWingGames
 
 		public void ShowVideoAd ()
 		{
-			if (canShowAd)
+			if (canShowAd && !adsRemoved)
 				HZVideoAd.Show ();
 		}
 
 		public void ShowVideoAd (string tag)
 		{
-			if (HZVideoAd.IsAvailable () && canShowAd) {
+			if (HZVideoAd.IsAvailable () && canShowAd && !adsRemoved) {
 				HZShowOptions options = new HZShowOptions ();
 				options.Tag = tag;
 				HZVideoAd.ShowWithOptions (options);
@@ -157,6 +187,8 @@ namespace WiseWingGames
 
 		public void ShowBannerAd (string _position)
 		{
+			if (adsRemoved)
+				return;
 			HZBannerShowOptions showOptions = new HZBannerShowOptions ();
 			showOptions.Position = _position;
 			HZBannerAd.ShowWithOptions (showOptions);
