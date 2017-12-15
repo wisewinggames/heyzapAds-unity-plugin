@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdedcc90478b8846b7386570c64552d, type: 3}
   m_Name: GeneralSettings
   m_EditorClassIdentifier: 
-  appStore: 1
+  appStore: 0
   googlePlayStore: com.salman.mymenusystem
-  amazonAppStore: com.salman.mymenusystem.amz
+  amazonAppStore: com.wisewinggames.crimesimulator.amz
