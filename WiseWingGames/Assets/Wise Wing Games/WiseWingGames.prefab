@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4827458710030086}
   - component: {fileID: 114596304936194772}
   - component: {fileID: 114249097008805422}
+  - component: {fileID: 114929011062483202}
   m_Layer: 0
   m_Name: WiseWingGames
   m_TagString: Untagged
@@ -65,3 +66,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generalSettings: {fileID: 11400000, guid: 8721fc1fcef38234f82d1a2fe916d8f3, type: 2}
   adsSettings: {fileID: 11400000, guid: ad89fd443adae96469bfa7515b1f1495, type: 2}
+  gameServicesSettings: {fileID: 11400000, guid: fbb949fd8b41aab4cb7744e2ae37bcf6,
+    type: 2}
+--- !u!114 &114929011062483202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1191426091829638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ce7520a66d3934dac3620d5bb82b42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

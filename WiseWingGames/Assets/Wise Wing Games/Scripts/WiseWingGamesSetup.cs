@@ -18,7 +18,8 @@ namespace WiseWingGames
 
 		public AdsSettings GetAdsSettings { get { return adsSettings; } }
 
-
+		[SerializeField]GameServicesSettings gameServicesSettings;
+		public GameServicesSettings GetGameServicesSettings{get{ return gameServicesSettings;}}
 
 		void Awake ()
 		{

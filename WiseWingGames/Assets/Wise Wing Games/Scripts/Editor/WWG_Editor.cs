@@ -40,7 +40,40 @@ namespace WiseWingGames
 			}
 		}
 
+		[MenuItem ("Wise Wing Games/Game Services Settings", false, 1)]
+		public static void SelectGameServicesSettings ()
+		{
 
+			string[] folder = new string[]{ "Assets/Wise Wing Games/Settings" };
+
+			if (AssetDatabase.FindAssets ("GameServicesSettings", folder).Length == 1) {
+				Selection.activeObject = AssetDatabase.LoadMainAssetAtPath ("Assets/Wise Wing Games/Settings/GameServicesSettings.asset");
+			} else {
+				if (EditorUtility.DisplayDialog ("Wise Wing Games", "Game Services Settings not found, Create now?", "Yes!", "No")) {
+					CreateGameServicesSettings ();
+				}
+			}
+		}
+
+		public static void CreateGameServicesSettings ()
+		{
+			GameServicesSettings asset = ScriptableObject.CreateInstance < GameServicesSettings > ();
+			if (!AssetDatabase.IsValidFolder ("Assets/Wise Wing Games/Settings")) {
+				AssetDatabase.CreateFolder ("Assets/Wise Wing Games", "Settings");
+			}
+			AssetDatabase.CreateAsset (asset, "Assets/Wise Wing Games/Settings/GameServicesSettings.asset");
+
+			AssetDatabase.SaveAssets ();
+
+			string[] folder = new string[]{ "Assets/Wise Wing Games/Settings" };
+			if (AssetDatabase.FindAssets ("GameServicesSettings", folder).Length == 1) {
+				EditorUtility.DisplayDialog ("Wise Wing Games", "Game Services Settings created Successfully!!!  :)", "Acha!");
+			} else {
+				EditorUtility.DisplayDialog ("Wise Wing Games", "Game Services Settings creation Failed!!!  See Console!  :(", "Acha!");
+			}
+			SelectGameServicesSettings ();
+
+		}
 
 		public static void CreateGeneralSettings ()
 		{
