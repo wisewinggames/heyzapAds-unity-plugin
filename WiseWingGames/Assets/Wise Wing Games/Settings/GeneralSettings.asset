@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appStore: 0
   googlePlayStore: com.salman.mymenusystem
-  amazonAppStore: com.salman.mymenusystem.amz
+  amazonAppStore: com.wisewinggames.crimesimulator.amz
