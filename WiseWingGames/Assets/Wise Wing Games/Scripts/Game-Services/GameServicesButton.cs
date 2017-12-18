@@ -25,7 +25,7 @@ namespace WiseWingGames
 		{
 			_button = GetComponent<Button> ();		
 
-			_button.onClick.AddListener (delegate() {});
+			_button.onClick.AddListener (delegate() {OnClickButton();});
 		
 		}
 

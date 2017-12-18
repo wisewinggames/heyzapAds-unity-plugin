@@ -34,6 +34,12 @@ namespace WiseWingGames
 		{
 			gameServicesSettings = WiseWingGamesSetup.instance.GetGameServicesSettings;
 
+			// recommended for debugging:
+			PlayGamesPlatform.DebugLogEnabled = true;
+
+			// Activate the Google Play Games platform
+			PlayGamesPlatform.Activate ();
+
 			if (gameServicesSettings.SignInOnStart)
 				SignIn ();
 
@@ -42,6 +48,7 @@ namespace WiseWingGames
 		public void SignIn ()
 		{
 			Social.localUser.Authenticate ((success) => {
+				UnityAndroidExtras.instance.makeToast("Authenication result: "+ success,1);
 				if (success && onAuthenticated != null)
 					onAuthenticated ();
 			});
@@ -49,9 +56,11 @@ namespace WiseWingGames
 
 		public void SignOut(){
 			PlayGamesPlatform.Instance.SignOut();
+			UnityAndroidExtras.instance.makeToast("SignOut ",1);
 		}
 		public void ShowLeaderboardUI(){
 			Social.ShowLeaderboardUI ();
+			UnityAndroidExtras.instance.makeToast("Show Leaderboard",1);
 		}
 
 		public void ShowLeaderboardUI(string leaderboardId){
@@ -128,6 +137,7 @@ namespace WiseWingGames
 
 		public void ShowAchievementUI(){
 			Social.ShowAchievementsUI ();
+					UnityAndroidExtras.instance.makeToast("SHow Achievements",1);
 		}
 
 		public void UnlockAchievement(string achievementID){
