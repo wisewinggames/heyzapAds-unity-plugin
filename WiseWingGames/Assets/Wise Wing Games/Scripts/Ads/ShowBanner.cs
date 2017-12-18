@@ -18,6 +18,7 @@ namespace WiseWingGames
 
 		void OnEnable ()
 		{
+			
 			if (bannerPosition == BannerPosition.Top)
 				AdManager.instance.ShowBannerAd ("top");
 			else
