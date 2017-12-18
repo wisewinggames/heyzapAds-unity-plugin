@@ -28,9 +28,12 @@ namespace WiseWingGames
 		public AppStore appStore;
 
 		[Header ("Bundle Identifiers")]
-		public string googlePlayStore;
-		public string amazonAppStore;
+		public string googlePlayStoreBundleID;
+		public string amazonAppStoreBundleID;
 
+
+		public string googlePlayDeveloperPageLink = "https://play.google.com/store/apps/dev?id=8294473886068372842";
+		public string amazonDeveloperPageLink = "amzn://apps/android?p=com.wisewinggames.dunkhithoopshoot.amz&showAll=1";
 
 		public void Setup ()
 		{
@@ -38,7 +41,7 @@ namespace WiseWingGames
 			switch (appStore) {
 
 			case AppStore.GooglePlay:
-				PlayerSettings.SetApplicationIdentifier (BuildTargetGroup.Android, googlePlayStore);
+				PlayerSettings.SetApplicationIdentifier (BuildTargetGroup.Android, googlePlayStoreBundleID);
 
 			#if UNITY_PURCHASING && UNITY_EDITOR
 				UnityPurchasingEditor.TargetAndroidStore (UnityEngine.Purchasing.AndroidStore.GooglePlay);
@@ -47,7 +50,7 @@ namespace WiseWingGames
 				break;
 
 			case AppStore.Amazon:
-				PlayerSettings.SetApplicationIdentifier (BuildTargetGroup.Android, amazonAppStore);
+				PlayerSettings.SetApplicationIdentifier (BuildTargetGroup.Android, amazonAppStoreBundleID);
 	
 			#if UNITY_PURCHASING && UNITY_EDITOR
 				UnityPurchasingEditor.TargetAndroidStore (UnityEngine.Purchasing.AndroidStore.AmazonAppStore);

@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: GeneralSettings
   m_EditorClassIdentifier: 
   appStore: 0
-  googlePlayStore: com.salman.mymenusystem
-  amazonAppStore: com.wisewinggames.crimesimulator.amz
+  googlePlayStoreBundleID: com.salman.mymenusystem
+  amazonAppStoreBundleID: com.salman.mymenusystem.amz
+  googlePlayDeveloperPageLink: https://play.google.com/store/apps/dev?id=8294473886068372842
+  amazonDeveloperPageLink: amzn://apps/android?p=com.wisewinggames.dunkhithoopshoot.amz&showAll=1
