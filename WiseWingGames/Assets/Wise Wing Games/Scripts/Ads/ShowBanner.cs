@@ -18,7 +18,7 @@ namespace WiseWingGames
 
 		void OnEnable ()
 		{
-			MobileNativeUI.ShowToast ("Banner", true);
+			
 			if (bannerPosition == BannerPosition.Top)
 				AdManager.instance.ShowBannerAd ("top");
 			else
