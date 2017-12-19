@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114596304936194772}
   - component: {fileID: 114249097008805422}
   - component: {fileID: 114142304737712302}
+  - component: {fileID: 114450664124080194}
   m_Layer: 0
   m_Name: WiseWingGames
   m_TagString: Untagged
@@ -64,6 +65,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f936e17f85b46f24aa6f6588fa751aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114450664124080194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1191426091829638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd466345b11909b4197c7adad079327a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneSignalAppID: 0600da81-6eb8-4929-8d2a-0e4c9da4653d
 --- !u!114 &114596304936194772
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,22 +1,39 @@
 <dependencies>
   <packages>
+    <package>com.android.support:customtabs:+</package>
+    <package>com.android.support:support-v4:+</package>
     <package>com.google.android.gms:play-services-ads:11.6.0</package>
+    <package>com.google.android.gms:play-services-gcm:+</package>
+    <package>com.google.android.gms:play-services-location:+</package>
   </packages>
   <files>
-    <file>Assets/Plugins/Android/play-services-ads-11.6.0.aar</file>
-    <file>Assets/Plugins/Android/play-services-ads-license-11.6.0</file>
-    <file>Assets/Plugins/Android/play-services-ads-lite-11.6.0.aar</file>
-    <file>Assets/Plugins/Android/play-services-ads-lite-license-11.6.0</file>
-    <file>Assets/Plugins/Android/play-services-basement-11.6.0.aar</file>
-    <file>Assets/Plugins/Android/play-services-basement-license-11.6.0</file>
-    <file>Assets/Plugins/Android/play-services-gass-11.6.0.aar</file>
-    <file>Assets/Plugins/Android/play-services-gass-license-11.6.0</file>
-    <file>Assets/Plugins/Android/support-annotations-25.2.0.jar</file>
-    <file>Assets/Plugins/Android/support-compat-25.2.0.aar</file>
-    <file>Assets/Plugins/Android/support-core-ui-25.2.0.aar</file>
-    <file>Assets/Plugins/Android/support-core-utils-25.2.0.aar</file>
-    <file>Assets/Plugins/Android/support-fragment-25.2.0.aar</file>
-    <file>Assets/Plugins/Android/support-media-compat-25.2.0.aar</file>
-    <file>Assets/Plugins/Android/support-v4-25.2.0.aar</file>
+    <file>Assets/Plugins/Android/common-1.0.3.jar</file>
+    <file>Assets/Plugins/Android/customtabs-27.0.2.aar</file>
+    <file>Assets/Plugins/Android/play-services-ads-11.8.0.aar</file>
+    <file>Assets/Plugins/Android/play-services-ads-license-11.8.0</file>
+    <file>Assets/Plugins/Android/play-services-ads-lite-11.8.0.aar</file>
+    <file>Assets/Plugins/Android/play-services-ads-lite-license-11.8.0</file>
+    <file>Assets/Plugins/Android/play-services-base-11.8.0.aar</file>
+    <file>Assets/Plugins/Android/play-services-base-license-11.8.0</file>
+    <file>Assets/Plugins/Android/play-services-basement-11.8.0.aar</file>
+    <file>Assets/Plugins/Android/play-services-basement-license-11.8.0</file>
+    <file>Assets/Plugins/Android/play-services-gass-11.8.0.aar</file>
+    <file>Assets/Plugins/Android/play-services-gass-license-11.8.0</file>
+    <file>Assets/Plugins/Android/play-services-gcm-11.8.0.aar</file>
+    <file>Assets/Plugins/Android/play-services-gcm-license-11.8.0</file>
+    <file>Assets/Plugins/Android/play-services-iid-11.8.0.aar</file>
+    <file>Assets/Plugins/Android/play-services-iid-license-11.8.0</file>
+    <file>Assets/Plugins/Android/play-services-location-11.8.0.aar</file>
+    <file>Assets/Plugins/Android/play-services-location-license-11.8.0</file>
+    <file>Assets/Plugins/Android/play-services-tasks-11.8.0.aar</file>
+    <file>Assets/Plugins/Android/play-services-tasks-license-11.8.0</file>
+    <file>Assets/Plugins/Android/runtime-1.0.3.aar</file>
+    <file>Assets/Plugins/Android/support-annotations-27.0.2.jar</file>
+    <file>Assets/Plugins/Android/support-compat-27.0.2.aar</file>
+    <file>Assets/Plugins/Android/support-core-ui-27.0.2.aar</file>
+    <file>Assets/Plugins/Android/support-core-utils-27.0.2.aar</file>
+    <file>Assets/Plugins/Android/support-fragment-27.0.2.aar</file>
+    <file>Assets/Plugins/Android/support-media-compat-27.0.2.aar</file>
+    <file>Assets/Plugins/Android/support-v4-27.0.2.aar</file>
   </files>
 </dependencies>
