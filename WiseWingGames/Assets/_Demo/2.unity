@@ -1290,7 +1290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b3bd0d7008b72438b3d2c21f525a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _adType: 1
+  _adType: 2
   adTag: level-select
 --- !u!1 &721324093
 GameObject:

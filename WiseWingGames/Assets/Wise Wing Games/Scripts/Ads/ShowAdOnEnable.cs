@@ -10,7 +10,8 @@ namespace WiseWingGames
 		public enum AdType
 		{
 			Static,
-			Video
+			Video,
+			Chartboost
 
 		}
 
@@ -20,14 +21,23 @@ namespace WiseWingGames
 
 		void OnEnable ()
 		{
-			if (_adType == AdType.Static)
+			switch (_adType) {
+
+			case AdType.Static:
 				AdManager.instance.ShowInterstitialAd (adTag);
-			else
+				break;
+
+			case AdType.Video:
 				AdManager.instance.ShowVideoAd (adTag);
+				break;
+
+			case AdType.Chartboost:
+				AdManager.instance.ShowChartboostInterstitial ();
+				break;
+			}
+
+
 		}
 
-
 	}
-
-
 }
