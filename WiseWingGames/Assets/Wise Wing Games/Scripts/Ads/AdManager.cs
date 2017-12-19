@@ -129,6 +129,8 @@ namespace WiseWingGames
 			//Dont fetch interstitials if NoAds is baught
 			if (adsRemoved)
 				return;
+			
+			HZInterstitialAd.ChartboostFetchForLocation ("Default");
 
 			HZVideoAd.Fetch ();
 
@@ -142,6 +144,12 @@ namespace WiseWingGames
 		}
 
 		#region Static Ad
+
+		public void ShowChartboostInterstitial(){
+			if (canShowAd && !adsRemoved && HZInterstitialAd.ChartboostIsAvailableForLocation("Default")) {
+				HZInterstitialAd.ChartboostShowForLocation ("Default");
+			}
+		}
 
 		public void ShowInterstitialAd ()
 		{

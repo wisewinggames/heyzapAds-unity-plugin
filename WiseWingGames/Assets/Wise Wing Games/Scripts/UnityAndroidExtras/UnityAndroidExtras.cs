@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Runtime.InteropServices;
+using System.IO;
 
 namespace WiseWingGames
 {
@@ -28,13 +30,112 @@ namespace WiseWingGames
 		public static event OnAlertViewNegButtonClicked onAlertViewNegativeButtonClicked;
 
 	
-		public void Awake ()
+		GeneralSettings settings;
+
+		void Awake ()
 		{
 
 			if (instance != null)
 				Destroy (this);
 			else
 				instance = this;
+		}
+
+		void Start ()
+		{
+			settings = WiseWingGamesSetup.instance.GetGeneralSettings;
+
+		}
+
+
+		public void ShareScreenshot ()
+		{
+			ShareScreenshotWithText ("https://play.google.com/store/apps/details?id=" + settings.googlePlayStoreBundleID);
+		}
+
+		public void ShareScreenshotWithText (string text)
+		{
+			string screenShotPath = Application.persistentDataPath + "/screenshot.png";
+			if (File.Exists (screenShotPath))
+				File.Delete (screenShotPath);
+
+			Application.CaptureScreenshot ("screenshot.png");
+
+			StartCoroutine (delayedShare (screenShotPath, text));
+		}
+
+		//CaptureScreenshot runs asynchronously, so you'll need to either capture the screenshot early and wait a fixed time
+		//for it to save, or set a unique image name and check if the file has been created yet before sharing.
+		IEnumerator delayedShare (string screenShotPath, string text)
+		{
+			while (!File.Exists (screenShotPath)) {
+				yield return new WaitForSeconds (.05f);
+			}
+
+			NativeShare.Share (text, screenShotPath, "", "", "image/png", true, "");
+		}
+
+
+		public void rateMyGame ()
+		{
+			switch (settings.appStore) {
+
+			case GeneralSettings.AppStore.GooglePlay:
+				OpenAppPage (settings.googlePlayStoreBundleID);
+				break;
+			
+			case GeneralSettings.AppStore.Amazon:
+				OpenAppPage (settings.amazonAppStoreBundleID);
+				break;
+			
+			}
+		}
+
+		public void OpenAppPage (string bundleId)
+		{
+			switch (settings.appStore) {
+
+			case GeneralSettings.AppStore.GooglePlay:
+				Application.OpenURL ("https://play.google.com/store/apps/details?id=" + bundleId);
+				break;
+
+			case GeneralSettings.AppStore.Amazon:
+				Application.OpenURL ("amzn://apps/android?p=" + bundleId);
+				break;
+			}
+		}
+
+		public void OpenDeveloperPage ()
+		{
+			switch (settings.appStore) {
+
+			case GeneralSettings.AppStore.GooglePlay:
+				Application.OpenURL (settings.googlePlayDeveloperPageLink);
+				break;
+
+			case GeneralSettings.AppStore.Amazon:
+				Application.OpenURL (settings.amazonDeveloperPageLink);
+				break;
+			}
+		}
+
+		public void OpenFacebookPage ()
+		{
+			shareOnFacebook ("https://www.facebook.com/WiseWings2017");
+		}
+
+		public void ShareGameLinkOnTwitter ()
+		{
+			shareOnTwitter ("I'm playing! https://play.google.com/store/apps/details?id=" + settings.googlePlayStoreBundleID,
+				"https://twitter.com");
+		}
+
+		public void OpenShareGameLink ()
+		{
+			if (settings.appStore == GeneralSettings.AppStore.GooglePlay)
+				openShareIntent ("https://play.google.com/store/apps/details?id=" + settings.googlePlayStoreBundleID);
+			else if (settings.appStore == GeneralSettings.AppStore.Amazon)
+				openShareIntent ("http://www.amazon.com/gp/mas/dl/android?p=" + settings.googlePlayStoreBundleID);
 		}
 
 		/// <summary>

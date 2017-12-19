@@ -20,7 +20,6 @@ namespace WiseWingGames
 			button = GetComponent<Button> ();
 
 			button.onClick.AddListener (() => {
-				UnityAndroidExtras.instance.makeToast("SHowing Reward ad", 1);
 				AdManager.instance.ShowRewardAd (adTag);
 			});
 		}
