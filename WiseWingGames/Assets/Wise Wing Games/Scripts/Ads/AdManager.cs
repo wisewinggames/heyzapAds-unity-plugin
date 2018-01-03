@@ -221,7 +221,14 @@ namespace WiseWingGames
 
 
 		#region Reward Ad
-
+		/// <summary>
+		/// returns true if this instance is reward video available; otherwise, <c>false</c>.
+		/// </summary>
+		/// 
+		public bool IsRewardVideoAvailable(){
+			return HZIncentivizedAd.IsAvailable ();
+		}
+			
 		public void ShowRewardAd ()
 		{
 			if (HZIncentivizedAd.IsAvailable ())
