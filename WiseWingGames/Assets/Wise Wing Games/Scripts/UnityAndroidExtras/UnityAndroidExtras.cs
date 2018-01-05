@@ -50,7 +50,15 @@ namespace WiseWingGames
 
 		public void ShareScreenshot ()
 		{
-			ShareScreenshotWithText ("https://play.google.com/store/apps/details?id=" + settings.googlePlayStoreBundleID);
+			switch (settings.appStore) {
+			case GeneralSettings.AppStore.GooglePlay:
+				ShareScreenshotWithText ("https://play.google.com/store/apps/details?id=" + settings.googlePlayStoreBundleID);
+				break;
+
+			case GeneralSettings.AppStore.Amazon:
+				ShareScreenshotWithText ("http://www.amazon.com/gp/mas/dl/android?p=" + settings.googlePlayStoreBundleID);
+				break;
+			}
 		}
 
 		public void ShareScreenshotWithText (string text)
