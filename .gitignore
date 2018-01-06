@@ -32,3 +32,10 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+WiseWingGames/Assets/PlayServicesResolver/Editor.meta
+WiseWingGames/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.59.0.dll.meta
+WiseWingGames/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.59.0.dll.meta
+WiseWingGames/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.59.0.dll.meta
+WiseWingGames/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.59.0.dll.meta
+WiseWingGames/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.59.0.dll.meta
+WiseWingGames/Assets/PlayServicesResolver/Editor.meta
