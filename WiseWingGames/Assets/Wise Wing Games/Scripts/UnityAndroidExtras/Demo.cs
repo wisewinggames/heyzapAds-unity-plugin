@@ -73,18 +73,21 @@ public class Demo : MonoBehaviour {
 		}
 		if(GUI.Button(new Rect(230,70,200,50),"Is Application Installed"))
 		{
-			if(UnityAndroidExtras.instance.isApplicationIstalled(appBundle))
+#if UNITY_ANDROID
+                if(UnityAndroidExtras.instance.isApplicationIstalled(appBundle))
 				UnityAndroidExtras.instance.makeToast("Yes",0);
 			else 
 				UnityAndroidExtras.instance.makeToast("No",0);
+# endif
 		}
+
 		if(GUI.Button(new Rect(230,130,200,50),"Open Application"))
 		{
 			UnityAndroidExtras.instance.openApplication(appBundle);
 		}
 	}
 
-	#region IWebViewListener implementation
+#region IWebViewListener implementation
 	// web view listeneres called when page starts loading
 	public void onPageStarted ()
 	{
@@ -96,9 +99,9 @@ public class Demo : MonoBehaviour {
 		Debug.Log("page loaded");
 	}
 
-	#endregion
+#endregion
 
-	#region IAlertViewListener implementation
+#region IAlertViewListener implementation
 
 	public void onAlertButtonClicked ()
 	{
@@ -110,6 +113,6 @@ public class Demo : MonoBehaviour {
 		Debug.Log(" neg clicked");
 	}
 
-	#endregion
+#endregion
 }
 }

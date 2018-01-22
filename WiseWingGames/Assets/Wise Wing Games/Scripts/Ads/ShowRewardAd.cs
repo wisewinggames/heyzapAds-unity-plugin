@@ -20,7 +20,7 @@ namespace WiseWingGames
 			button = GetComponent<Button> ();
 
 			button.onClick.AddListener (() => {
-				AdManager.instance.ShowRewardAd (adTag);
+				AdManager.Instance.ShowRewardAd (adTag);
 			});
 		}
 

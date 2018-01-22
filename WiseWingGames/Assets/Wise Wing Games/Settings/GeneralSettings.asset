@@ -11,8 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdedcc90478b8846b7386570c64552d, type: 3}
   m_Name: GeneralSettings
   m_EditorClassIdentifier: 
-  appStore: 0
-  googlePlayStoreBundleID: com.salman.mymenusystem
-  amazonAppStoreBundleID: com.salman.mymenusystem.amz
+  appStore: 2
+  bundleID: com.salman.mymenusystem
   googlePlayDeveloperPageLink: https://play.google.com/store/apps/dev?id=8294473886068372842
   amazonDeveloperPageLink: amzn://apps/android?p=com.wisewinggames.dunkhithoopshoot.amz&showAll=1
+  VERSION: 1.0
+  BUILD_NUMBER: 1

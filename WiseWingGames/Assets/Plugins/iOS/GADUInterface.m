@@ -301,16 +301,6 @@ void GADURemoveBannerView(GADUTypeBannerRef banner) {
   [internalBanner removeBannerView];
 }
 
-float GADUGetBannerViewHeightInPixels(GADUTypeBannerRef banner) {
-  GADUBanner *internalBanner = (__bridge GADUBanner *)banner;
-  return internalBanner.heightInPixels;
-}
-
-float GADUGetBannerViewWidthInPixels(GADUTypeBannerRef banner) {
-  GADUBanner *internalBanner = (__bridge GADUBanner *)banner;
-  return internalBanner.widthInPixels;
-}
-
 /// Hides the GADNativeExpressAdView.
 void GADUHideNativeExpressAdView(GADUTypeNativeExpressAdRef nativeExpressAd) {
   GADUNativeExpressAd *internalNativeExpressAd = (__bridge GADUNativeExpressAd *)nativeExpressAd;
@@ -451,16 +441,6 @@ void GADURequestBannerAd(GADUTypeBannerRef banner, GADUTypeRequestRef request) {
   GADUBanner *internalBanner = (__bridge GADUBanner *)banner;
   GADURequest *internalRequest = (__bridge GADURequest *)request;
   [internalBanner loadRequest:[internalRequest request]];
-}
-
-void GADUSetBannerViewAdPosition(GADUTypeBannerRef banner, int position) {
-  GADUBanner *internalBanner = (__bridge GADUBanner *)banner;
-  [internalBanner setAdPosition:(GADAdPosition)position];
-}
-
-void GADUSetBannerViewCustomPosition(GADUTypeBannerRef banner, int x, int y) {
-  GADUBanner *internalBanner = (__bridge GADUBanner *)banner;
-  [internalBanner setCustomAdPosition:CGPointMake(x, y)];
 }
 
 /// Makes an interstitial ad request.

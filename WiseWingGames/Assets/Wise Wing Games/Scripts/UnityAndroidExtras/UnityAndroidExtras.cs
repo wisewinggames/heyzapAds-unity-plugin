@@ -51,12 +51,12 @@ namespace WiseWingGames
 		public void ShareScreenshot ()
 		{
 			switch (settings.appStore) {
-			case GeneralSettings.AppStore.GooglePlay:
-				ShareScreenshotWithText ("https://play.google.com/store/apps/details?id=" + settings.googlePlayStoreBundleID);
+			case GeneralSettings.Store.GooglePlay:
+				ShareScreenshotWithText ("https://play.google.com/store/apps/details?id=" + settings.GoogleBundleID);
 				break;
 
-			case GeneralSettings.AppStore.Amazon:
-				ShareScreenshotWithText ("http://www.amazon.com/gp/mas/dl/android?p=" + settings.googlePlayStoreBundleID);
+			case GeneralSettings.Store.Amazon:
+				ShareScreenshotWithText ("http://www.amazon.com/gp/mas/dl/android?p=" + settings.GoogleBundleID);
 				break;
 			}
 		}
@@ -88,12 +88,12 @@ namespace WiseWingGames
 		{
 			switch (settings.appStore) {
 
-			case GeneralSettings.AppStore.GooglePlay:
-				OpenAppPage (settings.googlePlayStoreBundleID);
+			case GeneralSettings.Store.GooglePlay:
+				OpenAppPage (settings.GoogleBundleID);
 				break;
 			
-			case GeneralSettings.AppStore.Amazon:
-				OpenAppPage (settings.amazonAppStoreBundleID);
+			case GeneralSettings.Store.Amazon:
+				OpenAppPage (settings.AmazonBundleID);
 				break;
 			
 			}
@@ -103,11 +103,11 @@ namespace WiseWingGames
 		{
 			switch (settings.appStore) {
 
-			case GeneralSettings.AppStore.GooglePlay:
+			case GeneralSettings.Store.GooglePlay:
 				Application.OpenURL ("https://play.google.com/store/apps/details?id=" + bundleId);
 				break;
 
-			case GeneralSettings.AppStore.Amazon:
+			case GeneralSettings.Store.Amazon:
 				Application.OpenURL ("amzn://apps/android?p=" + bundleId);
 				break;
 			}
@@ -117,11 +117,11 @@ namespace WiseWingGames
 		{
 			switch (settings.appStore) {
 
-			case GeneralSettings.AppStore.GooglePlay:
+			case GeneralSettings.Store.GooglePlay:
 				Application.OpenURL (settings.googlePlayDeveloperPageLink);
 				break;
 
-			case GeneralSettings.AppStore.Amazon:
+			case GeneralSettings.Store.Amazon:
 				Application.OpenURL (settings.amazonDeveloperPageLink);
 				break;
 			}
@@ -134,16 +134,16 @@ namespace WiseWingGames
 
 		public void ShareGameLinkOnTwitter ()
 		{
-			shareOnTwitter ("I'm playing! https://play.google.com/store/apps/details?id=" + settings.googlePlayStoreBundleID,
+			shareOnTwitter ("I'm playing! https://play.google.com/store/apps/details?id=" + settings.GoogleBundleID,
 				"https://twitter.com");
 		}
 
 		public void OpenShareGameLink ()
 		{
-			if (settings.appStore == GeneralSettings.AppStore.GooglePlay)
-				openShareIntent ("https://play.google.com/store/apps/details?id=" + settings.googlePlayStoreBundleID);
-			else if (settings.appStore == GeneralSettings.AppStore.Amazon)
-				openShareIntent ("http://www.amazon.com/gp/mas/dl/android?p=" + settings.googlePlayStoreBundleID);
+			if (settings.appStore == GeneralSettings.Store.GooglePlay)
+				openShareIntent ("https://play.google.com/store/apps/details?id=" + settings.GoogleBundleID);
+			else if (settings.appStore == GeneralSettings.Store.Amazon)
+				openShareIntent ("http://www.amazon.com/gp/mas/dl/android?p=" + settings.GoogleBundleID);
 		}
 
 		/// <summary>
@@ -273,24 +273,25 @@ namespace WiseWingGames
 			#endif
 		}
 
-		/// <summary>
-		/// Checks if a specific application istalled.(usefull for giving gold credit etc...)
-		/// </summary>
-		/// <returns><c>true</c>, if application istalled was ised, <c>false</c> otherwise.</returns>
-		/// <param name="bundleName">Bundle name.</param>
+        /// <summary>
+        /// Checks if a specific application istalled.(usefull for giving gold credit etc...)
+        /// </summary>
+        /// <returns><c>true</c>, if application istalled was ised, <c>false</c> otherwise.</returns>
+        /// <param name="bundleName">Bundle name.</param>
+#if !DEBUGMODE && UNITY_ANDROID
 		public bool isApplicationIstalled (string bundleName)
 		{
-			#if !DEBUGMODE && UNITY_ANDROID
+			
 			using (AndroidJavaObject jo = new AndroidJavaObject ("com.nevzatarman.unityextras.UnityExtras"))
 				return jo.Call<bool> ("isApplicationInstalled", bundleName);
-			#endif
-		}
+    }
+#endif
 
-		/// <summary>
-		/// Opens another application if it's installed
-		/// </summary>
-		/// <param name="bundleName">Bundle name.</param>
-		public void openApplication (string bundleName)
+        /// <summary>
+        /// Opens another application if it's installed
+        /// </summary>
+        /// <param name="bundleName">Bundle name.</param>
+        public void openApplication (string bundleName)
 		{
 			#if !DEBUGMODE && UNITY_ANDROID
 			using (AndroidJavaObject jo = new AndroidJavaObject ("com.nevzatarman.unityextras.UnityExtras"))

@@ -12,14 +12,14 @@ namespace WiseWingGames
 
 		void Start ()
 		{
-			if (AdManager.instance.CheckIfAdsAreRemoved ())
+			if (AdManager.Instance.CheckIfAdsAreRemoved ())
 				gameObject.SetActive (false);
 		}
 
 
 		public void Purchased (Product product)
 		{
-			AdManager.instance.RemoveAds ();	
+			AdManager.Instance.RemoveAds ();	
 			gameObject.SetActive (false);
 			txt.text = ""+product + " bought successfully";
 		}

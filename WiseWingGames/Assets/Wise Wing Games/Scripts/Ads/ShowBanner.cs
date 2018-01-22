@@ -20,14 +20,14 @@ namespace WiseWingGames
 		{
 			
 			if (bannerPosition == BannerPosition.Top)
-				AdManager.instance.ShowBannerAd ("top");
+				AdManager.Instance.ShowBannerAd ("top");
 			else
-				AdManager.instance.ShowBannerAd ("bottom");
+				AdManager.Instance.ShowBannerAd ("bottom");
 		}
 
 		void OnDisable ()
 		{
-			AdManager.instance.DestroyBanner ();
+			AdManager.Instance.DestroyBanner ();
 		}
 	}
 }

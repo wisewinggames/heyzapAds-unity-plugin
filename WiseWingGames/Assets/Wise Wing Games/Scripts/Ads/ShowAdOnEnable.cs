@@ -24,15 +24,15 @@ namespace WiseWingGames
 			switch (_adType) {
 
 			case AdType.Static:
-				AdManager.instance.ShowInterstitialAd (adTag);
+				AdManager.Instance.ShowInterstitialAd (adTag);
 				break;
 
 			case AdType.Video:
-				AdManager.instance.ShowVideoAd (adTag);
+				AdManager.Instance.ShowVideoAd (adTag);
 				break;
 
 			case AdType.Chartboost:
-				AdManager.instance.ShowChartboostInterstitial ();
+				AdManager.Instance.ShowChartboostInterstitial ();
 				break;
 			}
 
