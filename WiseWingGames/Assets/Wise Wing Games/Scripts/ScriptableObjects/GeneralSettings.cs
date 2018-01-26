@@ -49,6 +49,11 @@ namespace WiseWingGames
         string VERSION = "1.0";
         [SerializeField]
         int BUILD_NUMBER = 1;
+        [Space(10)]
+        [Tooltip("Text to send with applink or screenshot on social media")]
+        public string ShareAppLinkText = "";
+        [Space(10)]
+        public bool debugToasts = false; 
 
 #if UNITY_EDITOR
         public void Setup()

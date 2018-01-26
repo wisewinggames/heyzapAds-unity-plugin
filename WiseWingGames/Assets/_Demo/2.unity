@@ -1290,7 +1290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b3bd0d7008b72438b3d2c21f525a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _adType: 2
+  _adType: 1
   adTag: level-select
 --- !u!1 &721324093
 GameObject:
@@ -1532,7 +1532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &928127869
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2293,6 +2293,46 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!1 &1168154473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1168154475}
+  - component: {fileID: 1168154474}
+  m_Layer: 0
+  m_Name: RateUsPopUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1168154474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1168154473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c867b2221bebe43a8123aba23010d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1168154475
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1168154473}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 953.5345, y: 564.8237, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1262846130
 GameObject:
   m_ObjectHideFlags: 0
@@ -3476,7 +3516,7 @@ GameObject:
   - component: {fileID: 2140921396}
   - component: {fileID: 2140921395}
   m_Layer: 5
-  m_Name: ButtonShare (1)
+  m_Name: ButtonShareScreenshot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3512,7 +3552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c9f5f299e65c04c8e2f1b0b0c74a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonType: 4
+  _buttonType: 3
 --- !u!114 &2140921396
 MonoBehaviour:
   m_ObjectHideFlags: 0

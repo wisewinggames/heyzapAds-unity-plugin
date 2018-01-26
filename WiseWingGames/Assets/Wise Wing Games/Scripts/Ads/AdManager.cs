@@ -87,23 +87,41 @@ namespace WiseWingGames
         {
             if (canShowAd && !adsRemoved && HZInterstitialAd.ChartboostIsAvailableForLocation("Default"))
             {
+                Toaster.ShowDebugToast("Showing Chartboost Interstitial for location; Default");
                 HZInterstitialAd.ChartboostShowForLocation("Default");
+            }
+            else
+            {
+                Toaster.ShowDebugToast("Can't show Chartboost Interstitial because not available or Ads are removed");
             }
         }
 
         public void ShowInterstitialAd()
         {
-            if (canShowAd && !adsRemoved)
+            if (canShowAd && !adsRemoved && HZInterstitialAd.IsAvailable())
+            {
+                Toaster.ShowDebugToast("Showing Interstitial ad");
                 HZInterstitialAd.Show();
+            }
+            else
+            {
+                Toaster.ShowDebugToast("Cant show Interstitial ad");
+            }
         }
 
         public void ShowInterstitialAd(string tag)
         {
-            if (canShowAd && !adsRemoved)
+            if (canShowAd && !adsRemoved && HZInterstitialAd.IsAvailable(tag))
             {
+                Toaster.ShowDebugToast("Showing Interstitial for tag; " + tag);
+
                 HZShowOptions options = new HZShowOptions();
                 options.Tag = tag;
                 HZInterstitialAd.ShowWithOptions(options);
+            }
+            else
+            {
+                Toaster.ShowDebugToast("Can't show Interstitial for tag; " + tag);
             }
         }
 
@@ -113,17 +131,30 @@ namespace WiseWingGames
 
         public void ShowVideoAd()
         {
-            if (canShowAd && !adsRemoved)
+            if (canShowAd && !adsRemoved && HZVideoAd.IsAvailable())
+            {
+                Toaster.ShowDebugToast("Showing Video ad");
                 HZVideoAd.Show();
+            }
+            else
+            {
+                Toaster.ShowDebugToast("Can't show Video ad");
+            }
         }
 
         public void ShowVideoAd(string tag)
         {
-            if (HZVideoAd.IsAvailable() && canShowAd && !adsRemoved)
+            if (HZVideoAd.IsAvailable(tag) && canShowAd && !adsRemoved)
             {
+                Toaster.ShowDebugToast("Showing Video ad for tag; " + tag);
+
                 HZShowOptions options = new HZShowOptions();
                 options.Tag = tag;
                 HZVideoAd.ShowWithOptions(options);
+            }
+            else
+            {
+                Toaster.ShowDebugToast("Can't show Video ad for tag; " + tag);
             }
         }
 
@@ -134,20 +165,28 @@ namespace WiseWingGames
         public void ShowBannerAd(string _position)
         {
             if (adsRemoved)
+            {
+                Toaster.ShowDebugToast("Not showing banner ad because ads are removed");
                 return;
+            }
+
             HZBannerShowOptions showOptions = new HZBannerShowOptions();
             showOptions.Position = _position;
             HZBannerAd.ShowWithOptions(showOptions);
+
+            Toaster.ShowDebugToast("Showing banner ad");
         }
 
         public void HideBanner()
         {
             HZBannerAd.Hide();
+            Toaster.ShowDebugToast("Hiding banner ad");
         }
 
         public void DestroyBanner()
         {
             HZBannerAd.Destroy();
+            Toaster.ShowDebugToast("Destroying banner ad");
         }
 
         #endregion
@@ -159,27 +198,43 @@ namespace WiseWingGames
         /// 
         public bool IsRewardVideoAvailable()
         {
+            Toaster.ShowDebugToast("IsRewardVideoAvailable: " + HZIncentivizedAd.IsAvailable());
             return HZIncentivizedAd.IsAvailable();
         }
 
         public bool IsRewardVideoAvailable(string tag)
         {
+            Toaster.ShowDebugToast("IsRewardVideoAvailable for tag; " + tag + " = " + HZIncentivizedAd.IsAvailable(tag));
             return HZIncentivizedAd.IsAvailable(tag);
         }
 
         public void ShowRewardAd()
         {
             if (HZIncentivizedAd.IsAvailable())
+            {
+                Toaster.ShowDebugToast("Showing reward ad.");
+
                 HZIncentivizedAd.Show();
+            }
+            else
+            {
+                Toaster.ShowDebugToast("Can't show reward ad");
+            }
         }
 
         public void ShowRewardAd(string tag)
         {
-            if (HZIncentivizedAd.IsAvailable())
+            if (HZIncentivizedAd.IsAvailable(tag))
             {
+                Toaster.ShowDebugToast("Showing reward video for tag; " + tag);
+
                 HZIncentivizedShowOptions options = new HZIncentivizedShowOptions();
                 options.Tag = tag;
                 HZIncentivizedAd.ShowWithOptions(options);
+            }
+            else
+            {
+                Toaster.ShowDebugToast("Can't show reward video for tag; " + tag);
             }
         }
 
@@ -226,10 +281,12 @@ namespace WiseWingGames
                 {
                     //reward player here
                     OnRewardAdCompleted(adTag);
+                    Toaster.ShowDebugToast("Reward ad Conpleted for tag; " + adTag);
                 }
                 if (adState.Equals("incentivized_result_incomplete"))
                 {
                     OnRewardAdSkipped(adTag);
+                    Toaster.ShowDebugToast("Reward ad 'Skipped' for tag; " + adTag);
                 }
             };
 
@@ -261,6 +318,8 @@ namespace WiseWingGames
         //Init Heyzap with specific appstore options.......
         void InitHeyZap()
         {
+            Toaster.ShowDebugToast("Initializing Heyzap...");
+
             string heyzapId = adsSettings.heyzapId;
 
 #if (UNITY_ANDROID && WWG_GOOGLE )|| UNITY_IOS
@@ -275,21 +334,27 @@ namespace WiseWingGames
             foreach (string tag in adsSettings.rewardAdTags)
             {
                 HZIncentivizedAd.Fetch(tag);
+                Toaster.ShowDebugToast("Fetching 'reward' ad for tag; " + tag);
             }
 
             //Dont fetch interstitials if NoAds is baught
             if (adsRemoved)
+            {
+                Toaster.ShowDebugToast("Not fetching other ads because 'Remove_ads' is bought.");
                 return;
+            }
 
             HZInterstitialAd.ChartboostFetchForLocation("Default");
 
             foreach (string tag in adsSettings.staticAdTags)
             {
                 HZInterstitialAd.Fetch(tag);
+                Toaster.ShowDebugToast("Fetching 'static' ad for tag; " + tag);
             }
             foreach (string tag in adsSettings.videoAdTags)
             {
                 HZVideoAd.Fetch(tag);
+                Toaster.ShowDebugToast("Fetching 'video' ad for tag; " + tag);
             }
 
         }

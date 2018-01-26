@@ -13,15 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heyzapId: 777897ccb9e638a067849a03190b51c6
   staticAdTags:
-  - pause
   - vehicle-select
   videoAdTags:
   - level-select
-  - game-over
   rewardAdTags:
   - free-currency
-  - resume-play
-  showBanner: 0
-  bannerPosition: 0
   minTimeBetweenAdRequestsInSeconds: 15
   showTestSuite: 1

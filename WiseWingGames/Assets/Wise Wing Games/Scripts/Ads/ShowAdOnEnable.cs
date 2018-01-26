@@ -11,7 +11,7 @@ namespace WiseWingGames
 		{
 			Static,
 			Video,
-			Chartboost
+		//	Chartboost
 
 		}
 
@@ -31,9 +31,9 @@ namespace WiseWingGames
 				AdManager.Instance.ShowVideoAd (adTag);
 				break;
 
-			case AdType.Chartboost:
-				AdManager.Instance.ShowChartboostInterstitial ();
-				break;
+//			case AdType.Chartboost:
+	//			AdManager.Instance.ShowChartboostInterstitial ();
+		//		break;
 			}
 
 
